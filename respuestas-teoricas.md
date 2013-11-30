@@ -20,14 +20,14 @@
 
 5. ¿Para que se utilizan PIP y Bundler?, si no utilizas python o ruby, ¿cuál sería la alternativa para tu lenguaje?
 
-  PIP y Bundler son manejadores de paquetes para Python y Ruby respectivamente. 
+  **PIP** y **Bundler** son manejadores de paquetes para Python y Ruby respectivamente. 
 
   [NPM (NodeJS Package Manager)](https://npmjs.org/) es la alternativa en el mundo de NodeJS (backend). De ser necesario, probablemente para manejar paquetes del lado del cliente utilizaría [Bower](http://bower.io/) (manejador de paquetes de Javascript diseñados para correr en un navegador).
 
 6. ¿Qué es un Requirements file y un Gemfile? ¿Para qué los usarías en una aplicación?
 
-  Un *requirements* file y un *gemfile* son utilizados para manejar las dependencias de un proyecto en Python y Ruby respectivamente. Utilizando los formatos especificados para cada uno se pueden especificar los paquetes y versiones requeridas por el proyecto e instalarlos utilizando PIP o Bundler.
+  Un **requirements** file y un **gemfile** son utilizados para manejar las dependencias de un proyecto en Python y Ruby respectivamente. Utilizando los formatos especificados para cada uno se pueden especificar los paquetes y versiones requeridas por el proyecto e instalarlos utilizando PIP o Bundler.
 
-7. Genera una una clave ssh y envía el archivo .pub a devlabs­usb@talpor.com
+7. Genera una una clave ssh.
 
   [SSH key](https://api.github.com/users/scast/keys)
