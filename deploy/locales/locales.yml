@@ -1,0 +1,24 @@
+---
+- sudo: yes
+  remote_user: ubuntu
+  hosts: devlabs
+  tasks:
+    - name: Generar el locale correcto
+      command: locale-gen en_US.UTF-8
+      tags: sys conf
+
+    - name: Corriendo dpkg-reconfigure sobre los locales
+      command: dpkg-reconfigure locales
+      tags: sys conf
+      
+    - name: Actualizar /etc/default/locale
+      copy: src=locale dest=/etc/default/locale
+      tags: sys conf
+      
+    - name: Cambiar el huso horario a America/Caracas
+      command: echo "America/Caracas" | tee /etc/timezone
+      tags: sys conf
+
+    - name: Actualizando con dpkg-reconfigure
+      command: dpkg-reconfigure --frontend noninteractive tzdata
+      tags: sys conf
