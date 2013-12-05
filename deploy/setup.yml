@@ -5,37 +5,17 @@
   tasks: 
     - name: Actualizar los paquetes del servidor...
       apt: update_cache=yes
-      tags: syst
+      tags: sys
 
     - name: Hacer un dist-upgrade
       apt: upgrade=dist
       tags: sys 
+
+    - include: util-install.yml
+
+    - include: etckeeper/etckeeper.yml
     
-    - name: Instalar ufw 
-      apt: pkg=ufw state=present
-      tags: firewall
+    - include: ufw.yml
 
-    - name: Desactivar el firewall momentaneamente
-      command: ufw disable
-      tags: firewall
 
-    - name: Activar puerto ssh
-      command: ufw allow 6022
-      tags: firewall
-
-    - name: Activar puerto HTTP
-      command: ufw allow 6080
-      tags: firewall
-
-    - name: Activar puerto HTTPS
-      command: ufw allow 6443
-      tags: firewall
-
-    - name: Bloquear todo lo demas
-      command: ufw default deny
-      tags: firewall
-
-    - name: Activar el firewall.
-      command: echo 'y' | sudo ufw enable
-      tags: firewall
     

@@ -1,0 +1,27 @@
+- sudo: yes
+  remote_user: ubuntu
+  hosts: devlabs
+  tasks: 
+    - name: Instalar git
+      apt: pkg=git state=present
+      tags: sys util
+  
+    - name: Instalar htop
+      apt: pkg=htop state=present    
+      tags: sys util
+
+    - name: Instalar atool
+      apt: pkg=atool state=present
+      tags: sys util
+
+    - name: Instalar curl
+      apt: pkg=curl state=present
+      tags: sys util
+      
+    - name: Instalar wget 
+      apt: pkg=wget state=present
+      tags: sys util
+
+    - name: Instalar lo minimo imprescindible para compilar
+      apt: pkg=build-essential state=present
+      tags: sys util

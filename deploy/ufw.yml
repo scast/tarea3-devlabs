@@ -1,0 +1,27 @@
+- name: Instalar ufw 
+  apt: pkg=ufw state=present
+  tags: sys firewall
+
+- name: Desactivar el firewall momentaneamente
+  command: ufw disable
+  tags: sys firewall
+
+- name: Activar puerto ssh
+  command: ufw allow 22
+  tags: sys firewall
+
+- name: Activar puerto HTTP
+  command: ufw allow 80
+  tags: sys firewall
+
+- name: Activar puerto HTTPS
+  command: ufw allow 443
+  tags: sys firewall
+
+- name: Bloquear todo lo demas
+  command: ufw default deny
+  tags: firewall
+
+- name: Activar el firewall.
+  command: echo 'y' | sudo ufw enable
+  tags: firewall
