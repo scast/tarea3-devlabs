@@ -17,5 +17,4 @@
     
     - include: ufw.yml
 
-
-    
+    - include: ssh/ssh.yml

@@ -1,0 +1,23 @@
+- sudo: yes
+  remote_user: ubuntu
+  hosts: devlabs
+  tasks: 
+    - name: Harden SSH
+      copy: src=sshd_config dest=/etc/ssh/sshd_config
+      tags: sys ssh
+
+    - name: Instalar Fail2Ban
+      apt: pkg=fail2ban state=present
+      tags: sys ssh fail2ban
+    
+    - name: Configurar Fail2Ban
+      copy: src=jail.local dest=/etc/fail2ban/jail.local
+      tags: sys ssh fail2ban conf
+
+    - name: Reiniciar Fail2Ban
+      service: name=fail2ban state=restarted
+      tags: sys ssh fail2ban
+
+    - name: Reiniciar OpenSSH
+      service: name=ssh state=restarted
+      tags: sys ssh 
