@@ -1,0 +1,23 @@
+- sudo: yes
+  remote_user: ubuntu
+  hosts: devlabs
+  tasks: 
+    - name: Instalar etckeeper
+      apt: pkg=etckeeper state=present
+      tags: sys conf
+
+    - name: Borrar el repositorio que creo automaticamente
+      command: echo 'y' | etckeeper uninit
+      tags: sys conf
+      
+    - name: Re-configurar etckeeper para usar git
+      copy: src=etckeeper.conf dest=/etc/etckeeper/etckeeper.conf
+      tags: sys conf
+
+    - name: Re-inicializar el repositorio para etckeeper
+      command: etckeeper init
+      tags: sys conf
+
+    - name: Hacer commit inicial de etckeeper
+      command: etckeeper commit "Initial commit"
+      tags: sys conf
