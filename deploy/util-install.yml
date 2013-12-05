@@ -22,6 +22,10 @@
       apt: pkg=wget state=present
       tags: sys util
 
+    - name: Instalar tig
+      apt: pkg=tig state=present
+      tags: sys util
+
     - name: Instalar lo minimo imprescindible para compilar
       apt: pkg=build-essential state=present
       tags: sys util
