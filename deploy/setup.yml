@@ -21,3 +21,5 @@
     - include: locales/locales.yml
       
     - include: node/node.yml
+    
+    - include: mongodb/mongodb.yml
