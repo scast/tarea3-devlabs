@@ -1,9 +1,9 @@
 {
-    "name": "mean",
-    "description": "MEAN - A Modern Stack: MongoDB, ExpressJS, AngularJS, NodeJS. (BONUS: Passport User Support).",
+    "name": "pingmemaybe",
+    "description": "PingMeMaybe - a Node based app for testing if a website is up or down...",
     "version": "0.1.0",
     "private": false,
-    "author": "Amos Haviv",
+    "author": "Simón Castillo ",
     "repository": {
         "type": "git",
         "url": "https://github.com/linnovate/mean.git"
