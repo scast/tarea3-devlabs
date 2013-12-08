@@ -1,0 +1,8 @@
+---
+- remote_user: ubuntu
+  hosts: devlabs
+  tasks: 
+    - name: Instalar NVM, Node 0.10.x
+      script: install-node.sh
+      tags: sys node nvm
+    

@@ -1,6 +1,5 @@
 ---
-- sudo: yes
-  remote_user: ubuntu
+- remote_user: ubuntu
   hosts: devlabs
   tasks: 
     - name: Actualizar los paquetes del servidor...
@@ -20,3 +19,5 @@
     - include: ssh/ssh.yml
 
     - include: locales/locales.yml
+      
+    - include: node/node.yml
