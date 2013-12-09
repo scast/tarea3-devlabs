@@ -17,6 +17,7 @@ function addHttp(url) {
 }
 
 exports.check = function(req, res) {
+    console.log(req.body);
     req.checkBody('url', 'URL Invalida').notEmpty().isUrl();
     var vErrors = req.validationErrors();
     var ans = {
@@ -25,6 +26,7 @@ exports.check = function(req, res) {
     if (vErrors) {
         ans.status = 'ERROR';
         ans.errors = vErrors;
+        console.log(ans);
         return res.json(ans);
     }
     req.body.url = addHttp(req.body.url);
