@@ -1,3 +1,16 @@
 <section data-ng-controller="IndexController">
-	<h1>This is the home view</h1>
+  <h1>Hey, I just met you... and this is crazy...</h1>
+  <form class="form-horizontal" data-ng-submit="create()">
+    <div class="control-group">
+      <label class="control-label" for="url">But here's my URL</label>
+      <div class="controls">
+	<input type="text" data-ng-model="url" id="url" placeholder="http://www.google.com" required>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+	<input type="submit" class="btn" value="So Ping Me Maybe">
+      </div>
+    </div>
+  </form>
 </section>

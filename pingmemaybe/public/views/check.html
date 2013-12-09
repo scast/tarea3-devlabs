@@ -1,22 +1,32 @@
 <section data-ng-controller="IndexController" data-ng-init="check()">
-  <h1>{{ url }}</h1>
+  <h1><a href="{{ url }}">{{ url }}</a></h1>
   <div ng-switch="results.status">
     <div ng-switch-when="OK">
-      Todo pareciera estar bien desde aqui.
+      <dl>
+        <dt>Status</dt>
+        <dd class="ok">Funcionando normalmente.</dd>
+        <dt>Descripción</dt>
+        <dd>Todo pareciera estar bien desde aqui.</dd>
+      </dl>
     </div>
     <div ng-switch-when="DOWN">
-      Pareciera que el URL esta caido. Esto te puede servir mientras vuelve:
-      <ul>
-        <li><a href="{{ results.gcache }}">Google Cache</a></li>
-        <li><a href="{{ results.archive }}">Internet Archive</a></li>
-      </ul>
+        <dt>Status</dt>
+        <dd class="error">No hubo respuesta.</dd>
+        <dt>Descripción</dt>
+        <dd>Pareciera que el URL esta caido. Esto te puede servir mientras vuelve:
+          <ul>
+            <li><a href="{{ results.gcache }}">Google Cache</a></li>
+            <li><a href="{{ results.archive }}">Internet Archive</a></li>
+          </ul>
+        </dd>
+
+
     </div>
     <div ng-switch-when="ERROR">
-      Hubo un error validando el URL.
       <ul ng-repeat="error in results.errors">
         <li>{{ error.msg }}</li>
       </ul>
     </div>
   </div>
-  <a href="/">Regresar.</a>
+  <a href="#" ng-click="goBack()">Regresar.</a>
 </section>

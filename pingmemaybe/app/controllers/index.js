@@ -18,7 +18,7 @@ function addHttp(url) {
 
 exports.check = function(req, res) {
     console.log(req.body);
-    req.checkBody('url', 'URL Invalida').notEmpty().isUrl();
+    req.checkBody('url', 'URL Invalida. Por favor revisar y volver a intentarlo.').notEmpty().isUrl();
     var vErrors = req.validationErrors();
     var ans = {
         'status': null
