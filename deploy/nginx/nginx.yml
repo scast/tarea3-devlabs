@@ -1,0 +1,24 @@
+---
+- sudo: yes
+  remote_user: ubuntu
+  hosts: devlabs
+  tasks: 
+    - name: Instalar Nginx
+      apt: pkg=nginx state=present
+      tags: sys nginx
+    
+    - name: Eliminar sitio default
+      command: rm /etc/nginx/sites-enabled/default
+      tags: sys nginx
+    
+    - name: Crear carpeta de logs
+      command: mkdir /home/ubuntu/pingmemaybe/logs
+      tags: sys nginx
+
+    - name: Configurar el virtual host para la aplicacion
+      copy: src=pingmemaybe dest=/etc/nginx/sites-enabled/default
+      tags: sys nginx conf
+    
+    - name: Reiniciar Nginx
+      tags: sys nginx
+      service: name=nginx state=restarted

@@ -1,0 +1,19 @@
+---
+- remote_user: ubuntu
+  hosts: devlabs
+  vars: 
+    git_repo: https://github.com/scast/tarea3-devlabs.git
+    nvm_sh: /home/ubuntu/.nvm/nvm.sh
+  tasks: 
+    - name: Instalar Grunt y Bower
+      command: bash -c 'source {{ nvm_sh }} && npm install -g grunt bower'
+      tags: sys bower grunt
+
+    - name: Clonar el repositorio
+      git: repo={{ git_repo }} dest=/home/ubuntu/pingmemaybe
+      tags: sys app
+
+    - name: Instalar dependencias
+      command: chdir=/home/ubuntu/pingmemaybe/pingmemaybe bash -c 'source {{ nvm_sh }} && npm install'
+      tags: sys node bower npm
+      
