@@ -4,12 +4,13 @@
 var express = require('express'),
     mongoStore = require('connect-mongo')(express),
     flash = require('connect-flash'),
+    expressValidator = require('express-validator'),
     helpers = require('view-helpers'),
     config = require('./config');
 
 module.exports = function(app, passport, db) {
-    app.set('showStackError', true);    
-    
+    app.set('showStackError', true);
+
     //Prettify HTML
     app.locals.pretty = true;
 
@@ -64,6 +65,10 @@ module.exports = function(app, passport, db) {
         //use passport session
         app.use(passport.initialize());
         app.use(passport.session());
+
+        //use express-validator
+        app.use(express.bodyParser());
+        app.use(expressValidator());
 
         //routes should be at the last
         app.use(app.router);
