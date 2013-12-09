@@ -1,0 +1,11 @@
+---
+- remote_user: ubuntu
+  hosts: devlabs
+  vars: 
+    nvm_sh: /home/ubuntu/.nvm/nvm.sh
+  tasks: 
+    - name: Actualizar el codebase
+      command: chdir=/home/ubuntu/pingmemaybe git pull
+      tags: sys app git
+    - name: Reiniciar el servidor
+      command: chdir=/home/ubuntu/pingmemaybe/pingmemaybe bash -c 'source {{ nvm_sh }} && ./node_modules/.bin/forever start -m 5 server.js'
