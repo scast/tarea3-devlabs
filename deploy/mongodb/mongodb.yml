@@ -1,0 +1,18 @@
+- sudo: yes
+  remote_user: ubuntu
+  hosts: devlabs
+  tasks: 
+    - name: Add MongoDB public key
+      command: apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+      tags: sys mongodb
+
+    - name: Add MongoDB repository
+      copy: src=mongodb.list dest=/etc/apt/sources.list.d/mongodb.list
+      tags: sys mongodb
+
+    - name: Actualizar lista de paquetes
+      apt: update_cache=yes
+      tags: sys
+
+    - name: Instalar MongoDB
+      apt: pkg=mongodb-10gen state=present
